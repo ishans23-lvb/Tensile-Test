@@ -9,3 +9,5 @@
 *.so
 *.tar
 *.zip
+*.csv
+*.xls

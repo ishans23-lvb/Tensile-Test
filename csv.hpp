@@ -9,6 +9,16 @@
 #ifndef csv_hpp
 #define csv_hpp
 
+#include <iostream>
+#include <vector>
 #include <stdio.h>
+using namespace std;
+
+#define MAX_LINE_SIZE 4096LU
+const char delim[]=" \t\r\n";
+
+
+vector<vector<double>> csv_read(const char* file);
+ostream& operator<<(ostream& os,const vector<vector<double>>& v);
 
 #endif /* csv_hpp */

@@ -91,7 +91,7 @@ for i=1:size(TTD,1)
     end
 end
 
-assert(size(BTTD,1)==size(TTD,1));
+assert(size(BTTD,1)<=size(TTD,1))
 TTD=BTTD;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -115,7 +115,6 @@ TTD=BTTD;
 % for i=2:size(STTD,1)
 %     assert(STTD(i-1,1)<=STTD(i,1));
 % end
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% View
@@ -151,3 +150,9 @@ end
 
 CTTD=TTD(si:ei,:);
 
+figure;
+plot(CTTD(:,1),CTTD(:,2))
+
+%% Output
+output_file="300-2-0-3.csv"
+csvwrite(output_file,CTTD);

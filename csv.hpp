@@ -15,7 +15,7 @@
 using namespace std;
 
 #define MAX_LINE_SIZE 4096LU
-const char delim[]=" \t\r\n";
+
 
 
 vector<vector<double>> csv_read(const char* file);

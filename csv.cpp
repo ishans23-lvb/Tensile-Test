@@ -10,6 +10,8 @@
 using namespace std;
 
 static bool validate_line(const char* line,long len);
+static const char delim[]=" \t\r\n";
+
 static pair<long,bool> read_line(FILE* f,char line[MAX_LINE_SIZE])
 {
     char* ptr=line;

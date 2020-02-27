@@ -32,20 +32,16 @@ int main(int argc,const char* argv[])
         {
             case 'f':
                 fcsv=true;
-                printf("csv format set\n");
                 break;
             case 'h':
                 header=true;
-                printf("header set\n");
                 break;
             case 'd':
                 dir=optarg;
-                printf("dir set to: %s\n",optarg);
                 break;
         }
     }
     
-    cout << get_info("220-2-0-3.csv") << endl;
     return 0;
 }
 

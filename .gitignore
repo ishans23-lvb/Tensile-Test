@@ -11,3 +11,8 @@
 *.zip
 *.csv
 *.xls
+
+LC-Data
+LC-Data/*
+EX-Data
+EX-Data/*

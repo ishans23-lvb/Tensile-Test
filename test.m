@@ -1,7 +1,7 @@
 close all;clear all;clc;
 
-strain_file='300-2-XY-3.csv';
-stress_file='T-300-2-XY-3.csv';
+strain_file='EX-Data/300-2-XY-3.csv';
+stress_file='LC-Data/300-2-XY-3.csv';
 
 VET=readtable(strain_file);
 VED=table2array(VET);
@@ -154,7 +154,7 @@ figure;
 plot(CTTD(:,1),CTTD(:,2))
 
 %% Output
-output_file="output.csv"
+output_file="Output/300-2-0-3.csv";%temp-time-direction-number.csv: xy=0,z=1
 csvwrite(output_file,CTTD);
 OD=csvread(output_file);
 figure;

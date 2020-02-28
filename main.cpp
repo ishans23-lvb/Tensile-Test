@@ -12,13 +12,16 @@
 #include <string.h>
 #include <stdio.h>
 #include <getopt.h>
+#include <limits.h>
 #include "csv.hpp"
 #include "name.hpp"
 using namespace std;
 #define TFILE "/Users/ishanshah/Desktop/Test/Data.csv"
 
-static const char* dir=nullptr;
+char dir[PATH_MAX+1]="";
+char output_file[PATH_MAX+1]="";
 static bool fcsv=false, header=false;
+static int rounds=-1;
 
 
 ostream& operator<<(ostream& os,const vector<int>& v);
@@ -26,19 +29,35 @@ ostream& operator<<(ostream& os,const vector<int>& v);
 int main(int argc,const char* argv[])
 {
     int ch=0;
-    while((ch=getopt(argc,(char**)argv,"fhd:"))!=-1)
+    while((ch=getopt(argc,(char**)argv,"f:hd:r:"))!=-1)
     {
         switch(ch)
         {
             case 'f':
+            {
                 fcsv=true;
+                strcpy(output_file,optarg);
                 break;
+            }
             case 'h':
+            {
                 header=true;
                 break;
+            }
             case 'd':
-                dir=optarg;
+            {
+                strcpy(dir,optarg);
                 break;
+            }
+            case 'r':
+            {
+                sscanf(optarg,"%d",&rounds);
+                break;
+            }
+            default:
+            {
+                break;
+            }
         }
     }
     

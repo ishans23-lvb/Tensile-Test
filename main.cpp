@@ -15,8 +15,9 @@
 #include <limits.h>
 #include "csv.hpp"
 #include "name.hpp"
+#include "modulus.hpp"
 using namespace std;
-#define TFILE "/Users/ishanshah/Desktop/Projects/TT/Tensile-Test/Output/"
+#define TFILE "/Users/ishanshah/Desktop/Projects/TT/Tensile-Test/Output/300-2-0-2.csv"
 
 char dir[PATH_MAX+1]="";
 char output_file[PATH_MAX+1]="";
@@ -28,39 +29,12 @@ ostream& operator<<(ostream& os,const vector<int>& v);
 
 int main(int argc,const char* argv[])
 {
-    int ch=0;
-    while((ch=getopt(argc,(char**)argv,"f:hd:r:"))!=-1)
-    {
-        switch(ch)
-        {
-            case 'f':
-            {
-                fcsv=true;
-                strcpy(output_file,optarg);
-                break;
-            }
-            case 'h':
-            {
-                header=true;
-                break;
-            }
-            case 'd':
-            {
-                strcpy(dir,optarg);
-                break;
-            }
-            case 'r':
-            {
-                sscanf(optarg,"%d",&rounds);
-                break;
-            }
-            default:
-            {
-                break;
-            }
-        }
-    }
+    vector<vector<double>> data=csv_read(TFILE);
     
+    cout << data << endl << endl;
+    cout << "EM: " << get_em_naive(data) << endl;
+    cout << "EMR: " << get_em_rand(data,100) << endl;
+    cout << "EMA: " << get_em_adv(data,100) << endl;
     return 0;
 }
 

@@ -16,7 +16,7 @@
 #include "csv.hpp"
 #include "name.hpp"
 using namespace std;
-#define TFILE "/Users/ishanshah/Desktop/Test/Data.csv"
+#define TFILE "/Users/ishanshah/Desktop/Projects/TT/Tensile-Test/Output/"
 
 char dir[PATH_MAX+1]="";
 char output_file[PATH_MAX+1]="";

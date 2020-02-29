@@ -1,10 +1,10 @@
 close all;clear all;clc;
 
 
-core_name="300-2-Z-2";
+core_name="300-2-XY-3";
 strain_file="EX-Data/"+core_name+".csv";
 stress_file="LC-Data/"+core_name+".csv";
-output_file="Output/300-2-1-2.csv";%temp-time-direction-number.csv: xy=0,z=1
+output_file="Output/300-2-0-3.csv";%temp-time-direction-number.csv: xy=0,z=1
 
 VET=readtable(strain_file);
 VED=table2array(VET);
@@ -126,8 +126,6 @@ plot(TTD(:,1),TTD(:,2))
 title(core_name);
 xlabel('Strain(%)');
 ylabel('Stress(GPa)');
-
-
 %% Clip
 
 low_stress=.036433;

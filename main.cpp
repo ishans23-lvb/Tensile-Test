@@ -32,13 +32,12 @@ ostream& operator<<(ostream& os,const vector<int>& v);
 int main(int argc,const char* argv[])
 {
 //    vector<vector<double>> data=csv_read(TFILE);
-//
 //    cout << data << endl << endl;
 //    cout << "EM: " << get_em_naive(data) << endl;
 //    cout << "EMR: " << get_em_rand(data,100) << endl;
 //    cout << "EMA: " << get_em_adv(data,100) << endl << endl;
     
-    em_dir(TDIR,true,true);
+    print_results(TDIR,true,true);
     return 0;
 }
 

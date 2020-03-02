@@ -8,10 +8,12 @@
 
 #include "files.hpp"
 
-void em_dir(const char* const dir,const bool fcsv,const bool header)
+void print_results(const char* const dir,const bool fcsv,const bool header)
 {
     DIR* d=NULL;
     struct dirent* sd=NULL;
+    char full_fpath[PATH_MAX+1];
+    
     
     if(!(d=opendir(dir)))
     {
@@ -26,7 +28,16 @@ void em_dir(const char* const dir,const bool fcsv,const bool header)
     {
         if(sd->d_name[0]=='.')
             continue;
+        
+        memset(full_fpath,0,sizeof(full_fpath));
+        strcpy(full_fpath,dir);
+        strcat(full_fpath,"/");
+        strcat(full_fpath,sd->d_name);
+        
+        
         vector<int> info=get_info(sd->d_name);
+        vector<vector<double>> data=csv_read(full_fpath);
+        
         double em=0;
         for(size_t i=0;i<info.size();i++)
         {

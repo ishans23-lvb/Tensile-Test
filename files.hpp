@@ -16,6 +16,7 @@
 #include <sys/types.h>
 #include <dirent.h>
 #include <errno.h>
+#include <limits.h>
 #include <iostream>
 #include <vector>
 #include "csv.hpp"
@@ -25,7 +26,7 @@ using namespace std;
 
 
 
-void em_dir(const char* const dir,const bool fcsv=false,const bool header=false);
+void print_results(const char* const dir,const bool fcsv=false,const bool header=false);
 
 
 #endif /* files_hpp */

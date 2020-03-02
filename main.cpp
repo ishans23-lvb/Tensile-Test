@@ -16,8 +16,10 @@
 #include "csv.hpp"
 #include "name.hpp"
 #include "modulus.hpp"
+#include "files.hpp"
 using namespace std;
 #define TFILE "/Users/ishanshah/Desktop/Projects/TT/Tensile-Test/Output/300-2-0-2.csv"
+#define TDIR "/Users/ishanshah/Desktop/Projects/TT/Tensile-Test/Output"
 
 char dir[PATH_MAX+1]="";
 char output_file[PATH_MAX+1]="";
@@ -29,12 +31,14 @@ ostream& operator<<(ostream& os,const vector<int>& v);
 
 int main(int argc,const char* argv[])
 {
-    vector<vector<double>> data=csv_read(TFILE);
+//    vector<vector<double>> data=csv_read(TFILE);
+//
+//    cout << data << endl << endl;
+//    cout << "EM: " << get_em_naive(data) << endl;
+//    cout << "EMR: " << get_em_rand(data,100) << endl;
+//    cout << "EMA: " << get_em_adv(data,100) << endl << endl;
     
-    cout << data << endl << endl;
-    cout << "EM: " << get_em_naive(data) << endl;
-    cout << "EMR: " << get_em_rand(data,100) << endl;
-    cout << "EMA: " << get_em_adv(data,100) << endl;
+    em_dir(TDIR,true,true);
     return 0;
 }
 

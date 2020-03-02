@@ -22,7 +22,7 @@ void print_results(const char* const dir,const bool fcsv,const bool header)
     }
     
     if(header)
-        printf("Temp(°C),Time(s),Direction(XY=0,Z=1),Number\n");
+        printf("Temp(°C),Time(s),Direction(XY=0,Z=1),Number,EM(GPa)\n");
     
     while((sd=readdir(d)))
     {
@@ -34,11 +34,9 @@ void print_results(const char* const dir,const bool fcsv,const bool header)
         strcat(full_fpath,"/");
         strcat(full_fpath,sd->d_name);
         
-        
         vector<int> info=get_info(sd->d_name);
-        vector<vector<double>> data=csv_read(full_fpath);
+        double em=get_em_from_file(full_fpath);
         
-        double em=0;
         for(size_t i=0;i<info.size();i++)
         {
             if(i>0)
@@ -55,4 +53,16 @@ void print_results(const char* const dir,const bool fcsv,const bool header)
         else
             printf(": %lf\n",em);
     }
+}
+
+double get_em_from_file(const char* file)
+{
+    vector<vector<double>> data=csv_read(file);
+    
+    double nem=get_em_naive(data);
+    double rem=get_em_rand(data);
+    double aem=get_em_adv(data);
+    
+    (void)nem;(void)rem;(void)aem;
+    return nem;
 }

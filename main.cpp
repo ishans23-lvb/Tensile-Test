@@ -21,8 +21,7 @@ using namespace std;
 #define TFILE "/Users/ishanshah/Desktop/Projects/TT/Tensile-Test/Output/300-2-0-2.csv"
 #define TDIR "/Users/ishanshah/Desktop/Projects/TT/Tensile-Test/Output"
 
-char dir[PATH_MAX+1]="";
-char output_file[PATH_MAX+1]="";
+static char dir[PATH_MAX+1]="";
 static bool fcsv=false, header=false;
 static int rounds=-1;
 
@@ -31,13 +30,44 @@ ostream& operator<<(ostream& os,const vector<int>& v);
 
 int main(int argc,const char* argv[])
 {
-//    vector<vector<double>> data=csv_read(TFILE);
-//    cout << data << endl << endl;
-//    cout << "EM: " << get_em_naive(data) << endl;
-//    cout << "EMR: " << get_em_rand(data,100) << endl;
-//    cout << "EMA: " << get_em_adv(data,100) << endl << endl;
+    int ch=0;
+    while((ch=getopt(argc,(char**)argv,"d:r:fh"))!=-1)
+    {
+        switch(ch)
+        {
+            case 'd':
+            {
+                memset(::dir,0,sizeof(::dir));
+                strcpy(::dir,optarg);
+                break;
+            }
+            case 'r':
+            {
+                sscanf(optarg,"%d",&::rounds);
+                break;
+            }
+            case 'f':
+            {
+                ::fcsv=true;
+                break;
+            }
+            case 'h':
+            {
+                ::header=true;
+                break;
+            }
+            default:
+                break;
+        }
+    }
     
-    print_results(TDIR,true,true);
+    fprintf(stderr,"DIR: %s\n",::dir);
+    fprintf(stderr,"csv format: %d\n",::fcsv);
+    fprintf(stderr,"Headers: %d\n",::header);
+    fprintf(stderr,"Rounds: %d\n\n",::rounds);
+    
+    print_results(::dir,::fcsv,::header);
+    
     return 0;
 }
 

@@ -27,7 +27,9 @@ using namespace std;
 
 
 void print_results(const char* const dir,const bool fcsv=false,const bool header=false);
+vector<pair<vector<int>,double>> get_results(const char* const dir);
 double get_em_from_file(const char* file);
+
 
 
 #endif /* files_hpp */

@@ -1,10 +1,10 @@
 close all;clear all;clc;
 
 
-core_name="300-8-XY-2";
+core_name="300-2-XY-2";
 strain_file="EX-Data/"+core_name+".csv";
 stress_file="LC-Data/"+core_name+".csv";
-output_file="Output/300-8-0-2.csv";%temp-time-direction-number.csv: xy=0,z=1
+output_file="Output/300-2-0-2.csv";%temp-time-direction-number.csv: xy=0,z=1
 
 VET=readtable(strain_file);
 VED=table2array(VET);
@@ -128,8 +128,8 @@ xlabel('Strain(%)');
 ylabel('Stress(GPa)');
 %% Clip
 
-low_stress=.073376;
-high_stress=.089926;
+low_stress=.068657;
+high_stress=.11636;
 assert(low_stress<high_stress);
 
 si=-1;

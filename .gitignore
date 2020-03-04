@@ -18,8 +18,20 @@ EX-Data
 EX-Data/*
 Output
 Output/*
+Plots/EX-Data
+Plots/EX-Data/*
+Plots/LC-Data
+Plots/LC-Data/*
+Plots/FTEX-Data
+Plots/FTEX-Data/*
+Plots/FTLC-Data
+Plots/FTLC-Data/*
+Plots/Output2
+Plots/Output2/*
+
 
 
 test.m~
 view.m~
+*.m~
 TT

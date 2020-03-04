@@ -32,7 +32,10 @@ static const vector<vector<int>> oinfo=
 void print_results(const char* const dir,const bool fcsv,const bool header)
 {
     vector<pair<vector<int>,double>> results=get_results(dir);
+    assert(results.size()==42);
     
+    if(header)
+        printf("Temp(°C),Time(hrs),Direction(XY=0)(Z=1),Number,Elastic Modulus(GPa)\n");
     for(size_t i=0;i<results.size();i++)
     {
         const vector<int>& info=results[i].first;
